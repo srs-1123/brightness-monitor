@@ -1,14 +1,3 @@
-[submodule "poky"]
-	path = layers/poky
-	url = https://git.yoctoproject.org/git/poky
-
-[submodule "meta-raspberrypi"]
-	path = layers/meta-raspberrypi
-	url = https://github.com/agherzan/meta-raspberrypi.git
-
-[submodule "meta-openembedded"]
-	path = layers/meta-openembedded
-	url = https://github.com/openembedded/meta-openembedded.git
 [submodule "layers/poky"]
 	path = layers/poky
 	url = https://git.yoctoproject.org/git/poky
