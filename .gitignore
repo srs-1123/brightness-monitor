@@ -4,6 +4,7 @@ build/tmp/
 build/cache/
 build/*.log
 build/bitbake-cookerdaemon.log
+build/bitbake.lock
 build/pseudodone
 downloads/
 sstate-cache/
