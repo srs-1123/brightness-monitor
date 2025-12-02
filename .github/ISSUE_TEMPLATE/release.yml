@@ -1,0 +1,82 @@
+name: リリース
+description: 新しいバージョンのリリース手順
+title: "[Release] v"
+labels: ["release"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## リリースチェックリスト
+        以下の手順に従ってリリースを実施してください。
+
+  - type: input
+    id: version
+    attributes:
+      label: リリースバージョン
+      description: セマンティックバージョニング形式で入力 (例: 1.0.0)
+      placeholder: "1.0.0"
+    validations:
+      required: true
+
+  - type: textarea
+    id: changes
+    attributes:
+      label: 主な変更点
+      description: このリリースに含まれる主な変更点を記載
+      placeholder: |
+        - 機能追加: XXX
+        - バグ修正: YYY
+        - 改善: ZZZ
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: pre-release
+    attributes:
+      label: リリース前チェック
+      description: リリース前に確認が必要な項目
+      options:
+        - label: すべてのサブモジュールが正しいブランチ (scarthgap) を指している
+        - label: ビルドが正常に完了する (`bitbake core-image-minimal`)
+        - label: 生成されたイメージが Raspberry Pi 4 で正常に起動する
+        - label: CHANGELOG.md が更新されている
+        - label: README.md のバージョン情報が更新されている
+
+  - type: checkboxes
+    id: build-verification
+    attributes:
+      label: ビルド検証
+      description: ビルド成果物の確認
+      options:
+        - label: "`build/tmp/deploy/images/raspberrypi4-64/` にイメージが生成されている"
+        - label: ".wic または .wic.bz2 ファイルが存在する"
+        - label: イメージサイズが想定範囲内である
+
+  - type: checkboxes
+    id: release-steps
+    attributes:
+      label: リリース手順
+      description: リリース実施時のチェックリスト
+      options:
+        - label: "Git タグを作成: `git tag -a v<version> -m 'Release v<version>'`"
+        - label: "タグをプッシュ: `git push origin v<version>`"
+        - label: GitHub Release を作成し、リリースノートを記載
+        - label: ビルド成果物 (.wic.bz2) を Release に添付
+        - label: リリース通知を関係者に送信
+
+  - type: checkboxes
+    id: post-release
+    attributes:
+      label: リリース後確認
+      description: リリース後に確認する項目
+      options:
+        - label: GitHub Release ページが正しく表示される
+        - label: ダウンロードリンクが有効である
+        - label: 次バージョンの開発ブランチを作成（必要に応じて）
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: 備考
+      description: その他の注意事項や補足情報
+      placeholder: 特記事項があれば記載してください
