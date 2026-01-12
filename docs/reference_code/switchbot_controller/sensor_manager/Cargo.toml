@@ -1,0 +1,8 @@
+[package]
+name = "sensor_manager"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+gpiod = "0.3"
+i2cdev = "0.6.1"
