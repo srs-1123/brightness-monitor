@@ -19,6 +19,14 @@ if cpputest_dep.found()
                         dependencies : cpputest_dep,
                         install : false)
 
+  # VCNL4040テスト
+  test_vcnl4040_exe = executable('test-vcnl4040',
+                                  'tests/test_vcnl4040.cpp',
+                                  include_directories : include_directories('src'),
+                                  dependencies : cpputest_dep,
+                                  install : false)
+
   # テストを登録
   test('unit tests', test_exe)
+  test('vcnl4040 tests', test_vcnl4040_exe)
 endif
